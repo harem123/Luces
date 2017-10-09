@@ -47,7 +47,8 @@ int matriz[8][8] = {      // con esta matriz se representa las 64 celdas tiene n
 
 
 
-// ++++++ se declaran variables para temporizador y la semilla del random     
+// ++++++ se declaran variables para temporizador y la semilla del random  
+int foo;   
 boolean flagVerde = false;
 boolean flagBlanco = false;
 boolean flagReinicio = false;
