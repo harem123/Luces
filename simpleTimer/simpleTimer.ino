@@ -19,19 +19,22 @@ SimpleTimer timer;
 int reseteador;
 
 boolean flag;
+boolean flanco;
 
-const int sensor=2;
+const int sensor=7;
  
 // function to be called just once
 void flagTime() 
 {
   flag = false; 
+
 }
   
 void setup() 
 {
   Serial.begin(9600);
   flag = true;
+  flanco = true;
   
  reseteador = timer.setTimeout(5000, flagTime);
 
@@ -45,9 +48,19 @@ void loop()
   // this is where the "polling" occurs
   timer.run();
   if (flag == true)
-  {
+  { 
+    if (flanco == true)
+    {
     Serial.println('o');
     delay(1000);
+    flanco = false;
+    }
+    if (flanco == false)
+    {
+    Serial.println('0');
+    delay(1000);
+    flanco = true;
+    }
   }
   else 
   {
