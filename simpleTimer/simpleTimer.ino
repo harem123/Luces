@@ -33,13 +33,15 @@ void setup()
   Serial.begin(9600);
   flag = true;
   
-  reseteador = timer.setTimeout(10000, flagTime);
+ reseteador = timer.setTimeout(5000, flagTime);
 
 }
  
 void loop() 
 {
   pinMode(sensor,INPUT);
+  pinMode(13,OUTPUT);
+  digitalWrite(13, LOW);
   // this is where the "polling" occurs
   timer.run();
   if (flag == true)
@@ -55,6 +57,8 @@ void loop()
   if (digitalRead(sensor) == HIGH)
   {
     timer.restartTimer(reseteador);
-    Serial.println('o000000');
+    Serial.println('x0000000');
+    flag = true; 
+    reseteador = timer.setTimeout(10000, flagTime);
   } 
 }
